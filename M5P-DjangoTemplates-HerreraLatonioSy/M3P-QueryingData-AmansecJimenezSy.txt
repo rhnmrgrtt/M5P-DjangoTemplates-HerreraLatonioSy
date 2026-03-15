@@ -1,0 +1,113 @@
+# Louise Amansec, 230286; Zeus Jimenez, 242359; Nathan Riley Sy, 244311
+# February 19, 2026 
+
+'''
+I hereby attest to the truth of the following facts:
+
+I have not discussed the Python language code in my program with anyone
+other than my instructor or the teaching assistants assigned to this course.
+
+I have not used Python language code obtained from another student, or
+any other unauthorized source, either modified or unmodified.
+
+If any Python language code or documentation used in my program was
+obtained from another source, such as a textbook or course notes, that has been clearly noted with proper citation in the
+comments of my program.
+'''
+
+a. all WaterBottles
+[S:SYRiley] WaterBottle.objects.all() 
+
+b. all Suppliers sorted by country, alphabetically
+[S:SYRiley] Supplier.objects.order_by('country')
+
+c. all WaterBottles sorted by brand, alphabetically
+[S:SYRiley] WaterBottle.objects.order_by('brand')
+
+d. all black WaterBottles
+[S:SYRiley] WaterBottle.objects.filter(color = 'Black')
+
+e. all white HydroFlask WaterBottles
+[S:JIMENEZZeus] WaterBottle.objects.filter(brand='Hydro Flask', color='White')
+
+f. all WaterBottles supplied by Sailfish Inc
+[S:JIMENEZZeus] WaterBottle.objects.filter(supplied_by__name='Sailfish, Inc.')
+
+g. all blue WaterBottles supplied by Bucky Inc
+[S:JIMENEZZeus] WaterBottle.objects.filter(color='Blue', supplied_by__name='Bucky, Inc.')
+
+h. only the name of the supplier from Germany
+[S:JIMENEZZeus] Supplier.objects.filter(country='Germany').values('name')
+
+i. all WaterBottles that cost 3000 or higher
+[S:AMANSECLouise] WaterBottle.objects.filter(cost__gte = 3000)
+
+j. all WaterBottles supplied by EITHER Bucky Inc or Meister Inc
+[S:AMANSECLouise] x = WaterBottle.objects.filter(supplied_by__name = 'Bucky, Inc.')
+y = WaterBottle.objects.filter(supplied_by__name = 'Meister, Inc.')
+print(x|y)
+
+k. all WaterBottles that have Oz as the unit of its size, sorted by cost from most expensive to least expensive
+[S:AMANSECLouise] x = WaterBottle.objects.filter(size__contains = 'Oz') 
+y = x.order_by('-cost')
+print(y)
+
+l. all WaterBottles with a cost that is NOT 3000 and has a wide mouth
+[S:AMANSECLouise] // I wasn't sure if it meant around 3000 or exactly 3000, so I went with the latter.
+x = WaterBottle.objects.exclude(cost = 3000)
+y = x.filter(mouth_size = 'Wide Mouth')
+print(y)
+
+m. [P: AMANSECLouise] all WaterBottles supplied by Matsuno, Inc.
+[S:SYRiley] WaterBottle.objects.filter(supplied_by__name = 'Matsuno, Inc.')
+
+n. [P: AMANSECLouise] all WaterBottles that have less than 100 in quantity
+[S:SYRiley] WaterBottle.objects.filter(current_quantity__lt = 100)
+
+o. [P: AMANSECLouise] all Suppliers created in 2019
+[S:SYRiley] Supplier.objects.filter(created_at__year = 2019)
+
+p. [P: AMANSECLouise] all Blue and White WaterBottles, sorted alphabetically
+[S:JIMENEZZeus] WaterBottle.objects.filter(color__in=['Blue', 'White']).order_by('brand')
+
+q. [P: AMANSECLouise] only the name of the Supplier in the Philippines
+[S:JIMENEZZeus] Supplier.objects.filter(country='Philippines').values('name')
+
+r. [P: AMANSECLouise] only the name of the WaterBottle with the SKU 24E5
+[S:JIMENEZZeus] WaterBottle.objects.filter(SKU='24E5')
+
+s. [P: SYRiley] all WaterBottles that cost less than 2000
+[S:JIMENEZZeus] WaterBottle.objects.filter(cost__lt=2000)
+
+t. [P: SYRiley] all Suppliers from Canada
+[S:JIMENEZZeus] Supplier.objects.filter(country='Canada')
+
+u. [P: SYRiley] only the SKUs of WaterBottles that cost more than 2500
+[S:JIMENEZZeus] WaterBottle.objects.filter(cost__gt=2500).values('SKU')
+
+v. [P: SYRiley] all red WaterBottles 
+[S:AMANSECLouise] WaterBottle.objects.filter(color = 'Red')
+
+w. [P: SYRiley] all WaterBottles sorted by cost from cheapest to most expensive
+[S:AMANSECLouise] WaterBottle.objects.order_by('cost')
+
+x. [P: SYRiley] all WaterBottles with quantity greater than 500
+[S:AMANSECLouise] WaterBottle.objects.filter(current_quantity__gt = 500)
+
+y. [P: JIMENEZZeus] all WaterBottles with a current quantity of 0
+[S: SYRiley] WaterBottle.objects.filter(current_quantity = 0)
+
+z. [P: JIMENEZZeus] all WaterBottles that cost between 1000 and 2000
+[S: SYRiley] WaterBottle.objects.filter(cost__gte = 1000, cost__lte = 2000)
+
+aa. [P: JIMENEZZeus] all Suppliers located in the USA
+[S: SYRiley] Supplier.objects.filter(country='USA')
+
+bb. [P: JIMENEZZeus] all WaterBottles with 'Wide Mouth' size
+[S:AMANSECLouise] WaterBottle.objects.filter(mouth_size = 'Wide Mouth')
+
+cc. [P: JIMENEZZeus] all WaterBottles sorted by current quantity from highest to lowest
+[S:AMANSECLouise] WaterBottle.objects.order_by('-current_quantity')
+
+dd. [P: JIMENEZZeus] all WaterBottles with 'Standard Mouth' size
+[S:AMANSECLouise] WaterBottle.objects.filter(mouth_size = 'Standard Mouth')
