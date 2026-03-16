@@ -1,6 +1,6 @@
 <!--
-, ; Zale Sebastian Latonio, 242494 ; Nathan Riley Sy, 244311
-March , 2026
+Rhinakels Herrera, 245785; Zale Sebastian Latonio, 242494 ; Nathan Riley Sy, 244311
+March 17, 2026
 
 I hereby attest to the truth of the following facts:
 
@@ -16,22 +16,31 @@ comments of my program.
 -->
 
 {% extends 'MyInventoryApp/base.html' %}
-{% load static %}
 
-<!DOCTYPE html>
-    <head>
-    </head>
-    <body>
-        {% block content %}
-        <tbody>
-            {% for d in bottles %}
-            <tr>
-                <td> {{ d.SKU }} </td>
-                <td> {{ d.brand }} </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        {% endblock %}
-    </body>
-</html>
-
+{% block content %}
+<h2>Water Bottles</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Supplier</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bottle in bottles %}
+        <tr>
+            <td>{{ bottle.id }}</td>
+            <td>{{ bottle.name }}</td>
+            <td>{{ bottle.capacity }}</td>
+            <td>{{ bottle.price }}</td>
+            <td>{{ bottle.supplier }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No bottles found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

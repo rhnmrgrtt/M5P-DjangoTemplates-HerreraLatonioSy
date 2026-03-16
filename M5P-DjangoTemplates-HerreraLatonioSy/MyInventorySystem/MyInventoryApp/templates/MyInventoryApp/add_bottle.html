@@ -1,6 +1,6 @@
 <!--
-, ; Zale Sebastian Latonio, 242494 ; Nathan Riley Sy, 244311
-March , 2026
+Rhinakels Herrera, 245785; Zale Sebastian Latonio, 242494 ; Nathan Riley Sy, 244311
+March 17, 2026
 
 I hereby attest to the truth of the following facts:
 
@@ -16,15 +16,16 @@ comments of my program.
 -->
 
 {% extends 'MyInventoryApp/base.html' %}
-{% load static %}
 
-<!DOCTYPE html>
-    <head>
-    </head>
-    <body>
-        {% block content %}
-        <h1>Test</h1>
-        {% endblock %}
-    </body>
-</html>
+{% block content %}
+<h2>Add Water Bottle</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Name: <input type="text" name="name"></label><br>
+        <label>Capacity: <input type="text" name="capacity"></label><br>
+        <label>Price: <input type="text" name="price"></label><br>
+        <label>Supplier: <input type="text" name="supplier"></label><br>
+        <button type="submit">Add Bottle</button>
+    </form>
+{% endblock %}
 

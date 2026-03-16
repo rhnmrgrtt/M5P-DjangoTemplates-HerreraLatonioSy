@@ -16,6 +16,7 @@ comments of my program.
 '''
 
 from django.shortcuts import render
+from .models import Supplier, WaterBottle
 
 # Create your views here.
 
